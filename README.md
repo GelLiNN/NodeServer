@@ -16,5 +16,4 @@ Basic functionality for an Express NodeJS server, using Cluster for the innumera
  		`DEBUG=my-application ./bin/start`
  * **Note** the port number logged (i.e. 3000), and visit via browser:
 
-	```http://http://localhost:<insert_port_here>/```
-:+1: boom
+	    `http://localhost:<insert_port_here>/`
