@@ -12,7 +12,7 @@ var cluster = require('cluster');
  * Store IP and port for binding.
  */
 var IP = '127.0.0.1';
-var PORT = 8888;
+var PORT = 8000;
 
 /**
  * Create HTTP server using cluster module. Master process
@@ -21,7 +21,7 @@ var PORT = 8888;
  */
 if (cluster.isMaster) {
     console.log('INFO: Starting server at ' + IP + ':' + PORT + '...');
-    var cpuCount = require('os').cpus().length;
+    var cpuCount = 1;//require('os').cpus().length;
     console.log('INFO: Counted ' + cpuCount + ' CPUs..');
     for (var i = 0; i < cpuCount; i += 1) {
         cluster.fork();
@@ -36,7 +36,7 @@ if (cluster.isMaster) {
     var server = http.createServer(app);
 
     // Listen on provided port, on all network interfaces.
-    server.listen(PORT);
+    server.listen(PORT, IP);
     server.on('error', onError);
     server.on('listening', onListening);
     console.log('Worker %d running!', cluster.worker.id);
